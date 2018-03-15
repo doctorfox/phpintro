@@ -1,9 +1,51 @@
 <?php 
 echo "<pre>";
-print_r($_POST);
+//$users = "try me";
+//echo $users;
+//print_r($_POST);
+$names = array(1,2,3,4,5,6,7,8,9,10);
+//$number1 = 1;
+//$number2 = 2;
+//$number3 = 3;
+//$sum = $number1 . $number2 . $number3;
+//print_r($sum);
+//$names[] = "Princess";
+//print_r($names);
+//echo $names[10];
+//$number = array(1,2,3,4,5);
+//$number[] = 6;
+//array_unshift($number, 0);
+//$firstitem = array_shift($number);
+//$firstitem = array_shift($number);
+//print_r($number);
+//echo $firstitem;
+//$assoc1 = array(
+//    'firstname' => 'Joshua', 
+//    'surname' => 'Edigbe', 
+//    'Surname' => 'Adigbe', 
+//    'firstname' => 'Meeeee...',
+//    'Kunle',
+//    'Standard1',
+//    'color' => 'red',
+//    'Tope',
+//    42212,
+//    'Motrhe',
+//    18
+//    );
+//print_r($assoc1);
+//
+//$concatenated_array = implode("'s father; ", $assoc1);
+//print_r($concatenated_array);
+//
+//$recovered_array = explode("father; ", $concatenated_array);
+//print_r($recovered_array);
+
+
 echo  "</pre>";
+//exit;
 $connection = new mysqli('localhost', 'root', 'nopassword', 'phpintro');
-$allrows = "SELECT * FROM users LIMIT 2,5";
+//$connection = mysqli_connect('localhost', 'root', 'nopassword', 'phpintro');
+$allrows = "SELECT id,firstname, surname FROM users LIMIT 0,3";
 $users = mysqli_query($connection, $allrows);
 
 //$users = $connection->query($allrows);
