@@ -46,24 +46,24 @@ $tasks = array(
                 return $task2['priority'] - $task1['priority'];
             }
             
-//            function bubbleSort(&$unsorted){
-//                $n = count($unsorted);
-//                for ($i = 0; $i < $n-1; $i++){
-//                    // Last i elements are already in place   
-//                    for ($j = 0; $j < $n-$i-1; $j++){
-//                        if ($unsorted[$j] > $unsorted[$j+1]){
-//                           swap($unsorted[$j], $unsorted[$j+1]);
-//                        }
-//                    }
-//                }
-//                return $unsorted;
-//            }
-//            
-//            function swap(&$arr1, &$arr2){
-//                $temp = $arr1;
-//                $arr1 = $arr2;
-//                $arr2 = $temp;
-//            }
+            function bubbleSort(&$unsorted){
+                $n = count($unsorted);
+                for ($i = 0; $i < $n-1; $i++){
+                    // Last i elements are already in place   
+                    for ($j = 0; $j < $n-$i-1; $j++){
+                        if ($unsorted[$j] > $unsorted[$j+1]){
+                           swap($unsorted[$j], $unsorted[$j+1]);
+                        }
+                    }
+                }
+                return $unsorted;
+            }
+            
+            function swap(&$arr1, &$arr2){
+                $temp = $arr1;
+                $arr1 = $arr2;
+                $arr2 = $temp;
+            }
             ?>
             </ul>
         </body>

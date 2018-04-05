@@ -56,8 +56,8 @@ foreach ($users as $user) {
 }
 
 ?>
-<doctype html>
-    <html>
+<!doctype html>
+    <html lang="en">
         <head>
             <title>Test Form</title>
             <style type="text/css">
