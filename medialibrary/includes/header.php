@@ -1,5 +1,6 @@
 <?php
 $types = array('video', 'audio', 'photo', 'document');
+$typesicons = array('video' => 'film', 'audio' => 'music', 'photo' => 'picture', 'document' => 'file');
 $page = $_GET['type'];
 $page_title = '';
 if(!empty($page) && in_array($page, $types)){

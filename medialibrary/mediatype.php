@@ -26,9 +26,9 @@ include './includes/header.php';
                         <div class="col-md-4">
                             <div class="well well-lg" style="text-align: center;">
                                 <a href="mediaview.html">
-                                    <span class="glyphicon glyphicon-film" style=" font-size: 4em"></span>
+                                    <span class="glyphicon glyphicon-<?php echo $typesicons[$page];?>" style=" font-size: 4em"></span>
                                     <br />
-                                    <h4>Video 1</h4>
+                                    <h4><?php echo "$page 1"; ?></h4>
                                 </a>
                                 <div class="row">
                                     <a href="edit.html" class="btn btn-xs btn-primary">Edit 
@@ -43,9 +43,9 @@ include './includes/header.php';
                         <div class="col-md-4">
                             <div class="well well-lg" style="text-align: center;">
                                 <a href="mediaview.html">
-                                    <span class="glyphicon glyphicon-film" style=" font-size: 4em"></span>
+                                    <span class="glyphicon glyphicon-<?php echo $typesicons[$page];?>" style=" font-size: 4em"></span>
                                     <br />
-                                    <h4>Video 2</h4>
+                                    <h4><?php echo "$page 2"; ?></h4>
                                 </a>
                                 <div class="row">
                                     <a href="edit.html" class="btn btn-xs btn-primary">Edit 
@@ -61,9 +61,9 @@ include './includes/header.php';
                         <div class="col-md-4">
                             <div class="well well-lg" style="text-align: center;">
                                 <a href="mediaview.html">
-                                    <span class="glyphicon glyphicon-film" style=" font-size: 4em"></span>
+                                    <span class="glyphicon glyphicon-<?php echo $typesicons[$page];?>" style=" font-size: 4em"></span>
                                     <br />
-                                    <h4>Video 3</h4>
+                                    <h4><?php echo "$page 3"; ?></h4>
                                 </a>
                                 <div class="row">
                                     <a href="edit.html" class="btn btn-xs btn-primary">Edit 
