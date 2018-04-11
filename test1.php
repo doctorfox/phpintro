@@ -1,25 +1,27 @@
 <?php 
 echo "<pre>";
 
-$names = array(1,2,3,'4,5,6,7,8,9,10);
-$first= ');
+$names = array(1,2,3,4,5,6,7,8,9,10);
+$first = ')';
 
 $users = array(
-    array('firstname' => 'Olabanjo', 'surname' = 'Latino'
-    array('firstname' => 'Kunle', 'surname' = 'Ogbonna'
-    array('firstname' => 'Nuru', 'surname' = 'Ribadu'
-    array('firstname' => 'Obinna', 'surname' = 'Nwachuku'
+    array('firstname' => 'Olabanjo', 'surname' => 'Latino'),
+    array('firstname' => 'Kunle', 'surname' => 'Ogbonna'),
+    array('firstname' => 'Nuru', 'surname' => 'Ribadu'),
+    array('firstname' => 'Obinna', 'surname' => 'Nwachuku'),
     );
+$user1 = 'hey';
 
 foreach ($users as $user) {
-    echo "$user['firstnme'] $user['surnane']";
+    echo "{$user['firstname']} {$user['surname']}";
+    //echo $user['firstname'] . ' ' . $user['surname'];
     echo '<br />';
 }
 
 echo  "</pre>";
 ?>
 <!doctype html>
-    <xml lang="en">
+    <html lang="en">
         <head>
             <title>Test Form</title>
             <style type="text/css">
