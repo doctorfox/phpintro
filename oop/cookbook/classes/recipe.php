@@ -5,8 +5,10 @@ class Recipe {
     private $source = '';
     private $instructions = array();
     private $category = '';
+    private $measurementtypes = array('tsp', 'tbsp', 'cup', 'oz', 'gram',
+        'fluid ounce', 'pint', 'quart', 'litre');
     
-    public function __construct($title_param = '', $source_param = '', $instructions_param = array()){
+    public function __construct($title_param = '', $source_param = '', $instructions_param = array(), $ingredients_param = array()){
         $this->title = $title_param;
         if (empty($title_param)){
             $this->title = 'How to prepare Egusi soup';
@@ -25,11 +27,34 @@ class Recipe {
                 "Add fresh ground egusi"
             );
         }
+        
+        $this->ingredients = $ingredients_param;
+        if(empty($ingredients_param)){
+            $this->ingredients = array(
+                array('item' => 'water', 'amount' => 2.5, 'measurement' => 'cup'),
+                array('item' => 'palm oil', 'amount' => 0.25, 'measurement' => 'litre')
+            );
+        }
     }
 
 
     public function displayRecipe(){
         echo '<h2>' . $this->title . ' by ' . $this->source . '</h2>';
+        $this->displayIngredients();
+        $this->displayInstructions();
+    }
+    
+    public function displayIngredients() {
+        echo '<h4>Ingredients</h4>';
+        echo '<ul>';
+        foreach($this->ingredients as $ingredient){
+            echo "<li>{$ingredient['amount']} {$ingredient['measurement']} {$ingredient['item']}</li>";
+        }
+        echo '</ul>';
+    }
+    
+    public function displayInstructions() {
+        echo '<h4>Steps</h4>';
         echo '<ol><li>' . implode('</li><li>', $this->instructions) . '</li></ol>';
     }
     
@@ -41,10 +66,18 @@ class Recipe {
         return $this->title;
     }
     
-    public function setIngredients($ingredients) {
-        if (is_array($ingredients)){
-            $this->ingredients = $ingredients;
+    public function setIngredients($item, $amount = null, $measurement = null) {
+        if($amount != null && !is_numeric($amount)){
+            echo 'Please enter a number for the amount!';
+            return;
         }
+        $measurement = strtolower($measurement);
+        if($measurement != null && !in_array($measurement, $this->measurementtypes)){
+            echo 'Please select a valid measurement of any of ' . implode(', ', $this->measurementtypes);
+            return;
+        }
+        
+        $this->ingredients[] = array('item' => ucwords($item), 'amount' => $amount, 'measurement' => $measurement);
     }
     
     public function getIngredients() {
@@ -61,7 +94,7 @@ class Recipe {
     
     public function setInstructions($instructions) {
         if (is_array($instructions)){
-            $this->instructions = $instructions;
+            $this->instructions = toTitleCase($instructions);
         }
     }
     
@@ -80,14 +113,29 @@ class Recipe {
 
 function toTitleCase($strtitle){
     $smallwordsarray = array('of','a','the','and','an','am','or','nor','but','is','if','then','else','when', 'at','it','from','by','on','off','for','in','out','over','to','into','with');
-    $strtitle = strtolower($strtitle);
-    $words = explode_custom(' ', $strtitle);
-    foreach ($words as $key => $word) {
-        if($key == 0 || !in_array($word, $smallwordsarray)){
-            $words[$key] = ucfirst($word);
+    if(!is_array($strtitle)){
+        $strtitle = strtolower($strtitle);
+        $words = explode(' ', $strtitle);
+        foreach ($words as $key => $word) {
+            if($key == 0 || !in_array($word, $smallwordsarray)){
+                $words[$key] = ucfirst($word);
+            }
         }
+        return implode(' ', $words);
+    } else {
+        $arr_result = array();
+        foreach ($strtitle as $eachstrtitle) {
+            $eachstrtitle = strtolower($eachstrtitle);
+            $words = explode(' ', $eachstrtitle);
+            foreach ($words as $key => $word) {
+                if($key == 0 || !in_array($word, $smallwordsarray)){
+                    $words[$key] = ucfirst($word);
+                }
+            }
+            $arr_result[] = implode(' ', $words);
+        }
+        return $arr_result;
     }
-    return implode(' ', $words);
 }
 
 function explode_custom($delimiter, $string){
@@ -105,4 +153,14 @@ function explode_custom($delimiter, $string){
     $finalarray[] = substr($string, $prev_position);
     //print_r($finalarray);
     return $finalarray;
+}
+
+function makePlural($quantity, $unit){
+    if(substr($unit, -1) == 's'){
+        $unit = substr($unit, 0, -1);
+    }
+    if(is_numeric($quantity) && $quantity == 1){
+        return "$quantity $unit";
+    }
+    return "$quantity {$unit}s";
 }
