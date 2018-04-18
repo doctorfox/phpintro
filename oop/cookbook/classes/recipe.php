@@ -1,10 +1,10 @@
 <?php
 class Recipe {
-    private $title = '';
-    private $ingredients = array();
-    private $source = '';
-    private $instructions = array();
-    private $category = '';
+    private $title;
+    private $ingredients;
+    private $source;
+    private $instructions;
+    private $category;
     private $measurementtypes = array('tsp', 'tbsp', 'cup', 'oz', 'gram',
         'fluid ounce', 'pint', 'quart', 'litre');
     

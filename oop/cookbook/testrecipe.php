@@ -4,7 +4,8 @@ include './classes/recipe.php';
 $myRecipe = new Recipe();
 $yourRecipe = new Recipe();
 
-//$myRecipe->setTitle("how to prepare oha soup");
+$myRecipe->setTitle("how to prepare oha soup");
+echo $myRecipe->title;
 //$myRecipe->setInstructions(
 //        array(
 //                "Place a pot on the heat",
